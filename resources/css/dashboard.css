@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap");
+
+html {
+    overflow: hidden;
+}
+
+.font-lato {
+    font-family: "Lato", sans-serif;
+}
+
+#dashboard {
+    display: grid;
+    grid-template-rows: 3rem 1fr;
+}
+
+#sidebar {
+    @apply hidden;
+}
+
+#header {
+    background-color: white;
+}
+
+#main {
+    min-height: 100vh;
+    height: calc(100vh - 3rem);
+}
+
+#sidebar header > img {
+    width: 170px;
+}
+
+ul#navbar li a {
+    @apply px-4 py-2 flex items-center;
+}
+
+ul#navbar li a:hover {
+    @apply bg-gray-900 bg-opacity-25;
+}
+
+ul#navbar li a.active {
+    @apply bg-gray-900 bg-opacity-50;
+}
+
+ul#navbar li a > img {
+    width: 20px;
+    @apply mr-4;
+}
+
+ul#navbar > li > ul a {
+    padding-left: 3.5rem;
+}
+
+@screen md {
+    #dashboard {
+        display: grid;
+        grid-template-columns: minmax(180px, 250px) 1fr 1fr;
+        grid-template-rows: 3rem 1fr;
+        grid-template-areas: "aside header header" "aside main main";
+    }
+
+    #sidebar {
+        @apply block;
+        grid-area: aside;
+    }
+
+    #header {
+        grid-area: header;
+    }
+
+    #main {
+        grid-area: main;
+        height: calc(100vh - 3rem);
+    }
+}

@@ -1,0 +1,86 @@
+@import url(https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap);
+html {
+  overflow: hidden;
+}
+
+.font-lato {
+  font-family: "Lato", sans-serif;
+}
+
+#dashboard {
+  display: grid;
+  grid-template-rows: 3rem 1fr;
+}
+
+#sidebar {
+  display: none;
+}
+
+#header {
+  background-color: white;
+}
+
+#main {
+  min-height: 100vh;
+  height: calc(100vh - 3rem);
+}
+
+#sidebar header > img {
+  width: 170px;
+}
+
+ul#navbar li a {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+ul#navbar li a:hover {
+  --bg-opacity: 1;
+  background-color: #1a202c;
+  background-color: rgba(26, 32, 44, var(--bg-opacity));
+  --bg-opacity: 0.25;
+}
+
+ul#navbar li a.active {
+  --bg-opacity: 1;
+  background-color: #1a202c;
+  background-color: rgba(26, 32, 44, var(--bg-opacity));
+  --bg-opacity: 0.5;
+}
+
+ul#navbar li a > img {
+  width: 20px;
+  margin-right: 1rem;
+}
+
+ul#navbar > li > ul a {
+  padding-left: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  #dashboard {
+    display: grid;
+    grid-template-columns: minmax(180px, 250px) 1fr 1fr;
+    grid-template-rows: 3rem 1fr;
+    grid-template-areas: "aside header header" "aside main main";
+  }
+
+  #sidebar {
+    display: block;
+    grid-area: aside;
+  }
+
+  #header {
+    grid-area: header;
+  }
+
+  #main {
+    grid-area: main;
+    height: calc(100vh - 3rem);
+  }
+}
+

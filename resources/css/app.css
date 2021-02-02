@@ -1,0 +1,86 @@
+@tailwind base;
+
+@tailwind components;
+
+:root {
+    --inove: #8DC74A;
+    --dashboard: #223E69;
+}
+
+.text-inove {
+    color: var(--inove);
+}
+
+.text-dashboard {
+    color: var(--dashboard);
+}
+
+.bg-inove {
+    background-color: var(--inove);
+}
+
+.bg-dark-blue {
+    background-color: var(--dashboard);
+}
+
+/* Form Styling */
+.btn-primary {
+    height: 2.75rem;
+    @apply rounded bg-green-600 w-full text-lg text-white font-semibold p-2;
+}
+
+.input-base {
+    height: 2.75rem;
+    @apply w-full rounded-md bg-gray-300 py-2 px-4 text-lg text-gray-900;
+}
+
+.label-base {
+    @apply font-semibold text-gray-900;
+}
+
+.btn-outline {
+    height: 2.75rem;
+    border-color: var(--dashboard);
+    text-decoration-color: var(--dashboard);
+    @apply rounded border-2 w-full text-lg font-semibold p-2;
+}
+
+.btn-outline:hover {
+    @apply bg-gray-900 text-white;
+}
+
+.input-outline {
+    height: 2.75rem;
+    @apply w-full rounded-md border shadow bg-white py-2 px-4 text-lg text-gray-900;
+}
+
+.form-group {
+    @apply mb-2;
+}
+
+.error-message {
+    @apply font-semibold rounded bg-red-200 px-4 py-1 text-red-700;
+}
+
+.success-message {
+    @apply font-semibold rounded bg-green-200 px-4 py-1 text-green-700;
+}
+
+.form-input-error {
+    @apply font-semibold text-sm text-red-700;
+}
+
+/* Common elements */
+.nav-tab {
+    @apply p-2 bg-gray-500 mr-1;
+}
+
+.nav-tab:hover {
+    @apply bg-gray-600;
+}
+
+.nav-tab.active {
+    @apply bg-gray-800 text-white;
+}
+
+@tailwind utilities;
