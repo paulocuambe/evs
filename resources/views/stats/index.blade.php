@@ -84,12 +84,20 @@
                         </thead>
                         <tbody>
                         <tr class="bg-white">
-                            <td class="border px-4 py-2">{{ $stats['vodacom']['pinless'] }}</td>
-                            <td class="border px-4 py-2">{{ $stats['vodacom']['pin'] }}</td>
-                            <td class="border px-4 py-2">{{ $stats['tmcel']['pinless'] }}</td>
-                            <td class="border px-4 py-2">{{ $stats['tmcel']['pin'] }}</td>
-                            <td class="border px-4 py-2">{{ $stats['movitel']['pinless'] }}</td>
-                            <td class="border px-4 py-2">{{ $stats['movitel']['pin'] }}</td>
+                            <td class="border px-4 py-2">{{ $stats['vodacom']['pinless']['qtty'] }}</td>
+                            <td class="border px-4 py-2">{{ $stats['vodacom']['pin']['qtty'] }}</td>
+                            <td class="border px-4 py-2">{{ $stats['tmcel']['pinless']['qtty'] }}</td>
+                            <td class="border px-4 py-2">{{ $stats['tmcel']['pin']['qtty'] }}</td>
+                            <td class="border px-4 py-2">{{ $stats['movitel']['pinless']['qtty'] }}</td>
+                            <td class="border px-4 py-2">{{ $stats['movitel']['pin']['qtty'] }}</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="border px-4 py-2">{{ $stats['vodacom']['pinless']['amount'] }}</td>
+                            <td class="border px-4 py-2">{{ $stats['vodacom']['pin']['amount'] }}</td>
+                            <td class="border px-4 py-2">{{ $stats['tmcel']['pinless']['amount'] }}</td>
+                            <td class="border px-4 py-2">{{ $stats['tmcel']['pin']['amount'] }}</td>
+                            <td class="border px-4 py-2">{{ $stats['movitel']['pinless']['amount'] }}</td>
+                            <td class="border px-4 py-2">{{ $stats['movitel']['pin']['amount'] }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -109,8 +117,10 @@
                         </thead>
                         <tbody>
                         <tr class="bg-white">
-                            <td class="border px-4 py-2">{{ $stats['credelec'] }}</td>
-                            <td class="border px-4 py-2">{{ $stats['vodacom']['pin'] }}</td>
+                            <td class="border px-4 py-2">{{ $stats['credelec']['qtty'] }}</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="border px-4 py-2">{{ $stats['credelec']['amount'] }}</td>
                         </tr>
                         </tbody>
                     </table>

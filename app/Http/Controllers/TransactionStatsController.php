@@ -16,22 +16,31 @@ class TransactionStatsController extends Controller
             $inteval = [$request->input('initial_date'), $request->input('final_date')];
             $customers = [$request->input('customer_id1'), $request->input('customer_id2')];
 
+            $pin = Transaction::query()->pinVoucherStats("vodacom", $inteval, $customers);
+            $pinless = Transaction::query()->pinlessVoucherStats("vodacom", $inteval, $customers);
+
             $stats["vodacom"] =[
-                "pin" => Transaction::query()->pinVoucherStats("vodacom", $inteval, $customers)->sum('amount'),
-                "pinless" => Transaction::query()->pinlessVoucherStats("vodacom", $inteval, $customers)->sum('amount')
+                "pin" => ["qtty"=> $pin->count(), "amount"=> $pin->sum('amount')],
+                "pinless" => ["qtty"=> $pinless->count(), "amount"=> $pinless->sum('amount')]
             ];
+
+            $pin = Transaction::query()->pinVoucherStats("tmcel", $inteval, $customers);
+            $pinless = Transaction::query()->pinlessVoucherStats("tmcel", $inteval, $customers);
 
             $stats["tmcel"] =[
-                "pin" => Transaction::query()->pinVoucherStats("tmcel", $inteval, $customers)->sum('amount'),
-                "pinless" => Transaction::query()->pinlessVoucherStats("tmcel", $inteval, $customers)->sum('amount')
+                "pin" => ["qtty"=> $pin->count(), "amount"=> $pin->sum('amount')],
+                "pinless" => ["qtty"=> $pinless->count(), "amount"=> $pinless->sum('amount')]
             ];
 
+            $pin = Transaction::query()->pinVoucherStats("movitel", $inteval, $customers);
+            $pinless = Transaction::query()->pinlessVoucherStats("movitel", $inteval, $customers);
             $stats["movitel"] =[
-                "pin" => Transaction::query()->pinVoucherStats("movitel", $inteval, $customers)->sum('amount'),
-                "pinless" => Transaction::query()->pinlessVoucherStats("movitel", $inteval, $customers)->sum('amount')
+                "pin" => ["qtty"=> $pin->count(), "amount"=> $pin->sum('amount')],
+                "pinless" => ["qtty"=> $pinless->count(), "amount"=> $pinless->sum('amount')]
             ];
 
-            $stats["credelec"] = Transaction::query()->credelecStats($inteval, $customers)->sum('amount');
+            $credelec =  Transaction::query()->credelecStats($inteval, $customers);
+            $stats["credelec"] = ["qtty"=>$credelec->count(),"amount"=>$credelec->sum('amount')];
 
             return view('stats/index')->with(['stats' => $stats]);
         } elseif ($request->hasAny($this->searchFields)) {
