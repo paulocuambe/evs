@@ -30,7 +30,7 @@
                 </li>
 
                 <li>
-                    <a href="" class="">
+                    <a href="{{ route('transactions') }}" class="">
                         <img src="{{ asset('img/icon/transaction.png') }}" alt="inbox Icon">
                         <span>Transações</span>
                     </a>
@@ -44,7 +44,7 @@
 
                     <ul>
                         <li>
-                            <a href="" class="">
+                            <a href="{{ route('stats') }}" class="">
                                 <img src="{{ asset('img/icon/messages.png') }}" alt="Settings Icon">
                                 <span>Recargas</span>
                             </a>

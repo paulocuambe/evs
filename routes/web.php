@@ -5,7 +5,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\TransactionStatsController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,13 +16,8 @@ use App\Http\Controllers\TransactionStatsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::prefix('dashboard')->group(function (){
+Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/transactions', [TransactionsController::class, 'index'])->name('transactions');
     Route::get('/stats', [TransactionStatsController::class, 'index'])->name('stats');
-
 });
