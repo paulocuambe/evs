@@ -17,7 +17,7 @@
                 </div>
             
                 <div>
-                    <label class="label-base" for="customerId2">Id2 do cliente</label>
+                    <label class="label-base" for="customerId2">Id2 da conta</label>
                     <input class="input-base" name="customer_id2" type="number" value="{{ request('customer_id2') }}" id="customerId2">
                 </div>
 
@@ -65,7 +65,7 @@
                         </tr>
                         <tr>
                             <th class="text-center bg-gray-400 border px-4 py-2" colspan="6">
-                                Periodo: <span class="font-normal">{{ request()->input('initial_date') ?? '*' }} áte {{ request()->input('final_date') ?? '*' }}</span>
+                                Periodo: <span class="font-normal">{{ request()->input('initial_date') ?? '-' }} áte {{ request()->input('final_date') ?? '*' }}</span>
                             </th>
                         </tr>
                         <tr class="text-center">
