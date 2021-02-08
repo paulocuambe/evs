@@ -32,6 +32,7 @@ class TransactionStats
 
         $pin = Transaction::query()->pinVoucherStats("movitel", $inteval, $customers);
         $pinless = Transaction::query()->pinlessVoucherStats("movitel", $inteval, $customers);
+        
         $stats["movitel"] =[
             "pin" => ["qtty"=> $pin->count(), "amount"=> $pin->sum('amount')],
             "pinless" => ["qtty"=> $pinless->count(), "amount"=> $pinless->sum('amount')]
