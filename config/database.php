@@ -63,15 +63,14 @@ return [
             ]) : [],
         ],
 
-
-        'evs_b' => [
+        'evs' => [
             'driver' => 'mysql',
-            // 'url' => env('DATABASE_URL'),
-            'host' => env('UVB_DB_HOST', '10.1.98.212'),
-            'port' => env('UVB_DB_PORT'),
-            'database' => env('UVB_DB_DATABASE', 'i9_V'),
-            'username' => env('UVB_DB_USERNAME', 'i9View'),
-            'password' => env('UVB_DB_PASSWORD'),
+            'url' => env('EVS_DATABASE_URL'),
+            'host' => env('EVS_DB_HOST', '127.0.0.1'),
+            'port' => env('EVS_DB_PORT', '3306'),
+            'database' => env('EVS_DB_DATABASE', 'forge'),
+            'username' => env('EVS_DB_USERNAME', 'forge'),
+            'password' => env('EVS_DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

@@ -9,6 +9,7 @@ class Transaction extends Model
 {
     use HasFactory;
     protected $table = "transaction";
+    protected $connection = "evs";
 
     public function scopeStatus($query, $status)
     {
