@@ -37,19 +37,10 @@
                 </li>
 
                 <li>
-                    <a>
+                    <a href="{{ route('stats') }}">
                         <img src="{{ asset('img/icon/stats.png') }}" alt="Stats Icon">
-                        <span>Estatísticas</span>
+                        <span>Digest</span>
                     </a>
-
-                    <ul>
-                        <li>
-                            <a href="{{ route('stats') }}" class="">
-                                <img src="{{ asset('img/icon/messages.png') }}" alt="Settings Icon">
-                                <span>Recargas</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
 
                 <li>

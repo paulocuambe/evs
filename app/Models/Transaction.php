@@ -122,4 +122,6 @@ class Transaction extends Model
     {
         return $this->hasOne(Dealer::class, 'id', 'dealer_id');
     }
+
+    
 }
