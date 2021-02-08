@@ -13,6 +13,7 @@ class TransactionStatsController extends Controller
     {
         if ($request->anyFilled('initial_date', 'final_date')) {
             $stats =[];
+
             $inteval = [$request->input('initial_date'), $request->input('final_date')];
             $customers = [$request->input('customer_id1'), $request->input('customer_id2')];
 

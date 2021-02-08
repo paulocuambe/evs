@@ -65,7 +65,7 @@
                         </tr>
                         <tr>
                             <th class="text-center bg-gray-400 border px-4 py-2" colspan="6">
-                                Periodo: <span class="font-normal">{{ request()->input('initial_date') ?? '-' }} áte {{ request()->input('final_date') ?? '*' }}</span>
+                                Periodo: <span class="font-normal">{{ request()->input('initial_date') ?? 'YYYY/MM/DD' }} áte {{ request()->input('final_date') ?? date('Y-m-d H:i') }}</span>
                             </th>
                         </tr>
                         <tr class="text-center">
@@ -73,7 +73,7 @@
                             <th class="text-white bg-green-700 px-4 py-2" colspan="2">Tmcel</th>
                             <th class="text-white bg-orange-600 px-4 py-2" colspan="2">Movitel</th>
                         </tr>
-                        <tr>
+                        <tr class="text-center">
                             <th class="font-normal bg-red-500 px-4 py-2">Pinless</th>
                             <th class="font-normal bg-red-500 px-4 py-2">Pin</th>
                             <th class="font-normal bg-green-500 px-4 py-2">Pinless</th>
@@ -83,7 +83,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="bg-white">
+                        <tr class="bg-white text-center">
                             <td class="border px-4 py-2">{{ $stats['vodacom']['pinless']['qtty'] }}</td>
                             <td class="border px-4 py-2">{{ $stats['vodacom']['pin']['qtty'] }}</td>
                             <td class="border px-4 py-2">{{ $stats['tmcel']['pinless']['qtty'] }}</td>
@@ -91,7 +91,7 @@
                             <td class="border px-4 py-2">{{ $stats['movitel']['pinless']['qtty'] }}</td>
                             <td class="border px-4 py-2">{{ $stats['movitel']['pin']['qtty'] }}</td>
                         </tr>
-                        <tr class="bg-white">
+                        <tr class="bg-white text-center">
                             <td class="border px-4 py-2">{{ $stats['vodacom']['pinless']['amount'] }}</td>
                             <td class="border px-4 py-2">{{ $stats['vodacom']['pin']['amount'] }}</td>
                             <td class="border px-4 py-2">{{ $stats['tmcel']['pinless']['amount'] }}</td>
@@ -111,11 +111,11 @@
                         </tr>
                         <tr>
                             <th class="text-center bg-gray-400 border px-4 py-2" colspan="6">
-                                Periodo: <span class="font-normal">{{ request()->input('initial_date') ?? '*' }} áte {{ request()->input('final_date') ?? '*' }}</span>
+                                Periodo: <span class="font-normal">{{ request()->input('initial_date') ?? 'YYYY/MM/DD' }} áte {{ request()->input('final_date') ?? date('Y-m-d H:i') }}</span>
                             </th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                         <tr class="bg-white">
                             <td class="border px-4 py-2">{{ $stats['credelec']['qtty'] }}</td>
                         </tr>
