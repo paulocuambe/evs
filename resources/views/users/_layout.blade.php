@@ -7,7 +7,7 @@
     <nav class="flex mb-8">
         <a href="" class="nav-tab {{ request()->routeIs('profile') ? 'active' : '' }}">Meu Perfil</a>
 
-        <a href="" class="nav-tab">
+        <a href="{{ route('users') }}" class="nav-tab {{ request()->routeIs('users') ? 'active' : '' }}">
             Utilizadores
         </a>
 

@@ -37,6 +37,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $pagination = 20;
+
     public function isSuperAdmin(){
         return $this->role == "super_admin";
     }

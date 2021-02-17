@@ -7,6 +7,7 @@ use App\Http\Controllers\TransactionStatsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UsersController;
 
 
 /*
@@ -32,4 +33,6 @@ Route::prefix('dashboard')->group(function () {
 
     Route::get('profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('update-password', [ProfileController::class, 'updatePassword'])->name('profile.password-reset');
+
+    Route::get('users', [UsersController::class, 'index'])->name('users');
 });
