@@ -6,6 +6,8 @@ use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\TransactionStatsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,9 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/transactions', [TransactionsController::class, 'index'])->name('transactions');
-    Route::get('/stats', [TransactionStatsController::class, 'index'])->name('stats');
+    Route::get('transactions', [TransactionsController::class, 'index'])->name('transactions');
+    Route::get('stats', [TransactionStatsController::class, 'index'])->name('stats');
+
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+    Route::put('update-password', [ProfileController::class, 'updatePassword'])->name('profile.password-reset');
 });

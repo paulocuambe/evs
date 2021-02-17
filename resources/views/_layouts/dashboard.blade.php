@@ -44,7 +44,7 @@
                 </li>
 
                 <li>
-                    <a href="" class="">
+                    <a href="{{ route('profile') }}" class="{{ request()->routeIs('profile') ? 'active' : '' }}">
                         <img src="{{ asset('img/icon/group.png') }}" alt="Settings Icon">
                         <span>Perfil</span>
                     </a>
