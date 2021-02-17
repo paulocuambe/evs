@@ -18,7 +18,7 @@ class UsersSeeder extends Seeder
             'name' => 'Paulo Cuambe',
             'username' => 'pcuambe',
             'email' => 'pcuambe@inove.it',
-            'password' => '$ecr3tAcce$$',
+            'password' => \bcrypt('$ecr3tAcce$$'),
             'role' => 'super_admin'
         ]);
     }

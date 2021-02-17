@@ -23,7 +23,7 @@ class AuthController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        $data = array_merge($data, ['is_suspended' => false]);
+        $data = array_merge($data, ['suspended' => false]);
 
         if (Auth::attempt($data)) {
             return redirect()->route('dashboard');

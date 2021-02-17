@@ -53,7 +53,7 @@
 
             <footer class="mb-8 px-4 py-2 flex items-center">
                 <img class="mr-4" style="width: 20px" src="{{ asset('img/icon/logout.png') }}" alt="Miscellaneous Icon">
-                <form method="post">
+                <form action="{{ route('logout') }}" method="post">
                     @csrf
                     <button class="hover:underline">Logout</button>
                 </form>

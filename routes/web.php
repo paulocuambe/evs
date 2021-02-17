@@ -19,7 +19,8 @@ use App\Http\Controllers\HomeController;
 */
 Route::get('/', [HomeController::class, 'index']);
 Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::POST('authenticate', [AuthController::class, 'index'])->name('authenticate');
+Route::post('authenticate', [AuthController::class, 'login'])->name('authenticate');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::prefix('dashboard')->group(function () {
