@@ -5,9 +5,9 @@
 
 @section('main')
     <nav class="flex mb-8">
-        <a href="" class="nav-tab {{ request()->routeIs('profile') ? 'active' : '' }}">Meu Perfil</a>
+        <a href="{{ route('profile') }}" class="nav-tab {{ request()->routeIs('profile') ? 'active' : '' }}">Meu Perfil</a>
 
-        <a href="{{ route('users') }}" class="nav-tab {{ request()->routeIs('users') ? 'active' : '' }}">
+        <a href="{{ route('users') }}" class="nav-tab {{ request()->routeIs('users.*') || request()->routeIs('users') ? 'active' : '' }}">
             Utilizadores
         </a>
 

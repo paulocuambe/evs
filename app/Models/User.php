@@ -39,7 +39,13 @@ class User extends Authenticatable
 
     protected $pagination = 20;
 
-    public function isSuperAdmin(){
+    public function isSuperAdmin()
+    {
         return $this->role == "super_admin";
+    }
+
+    public function isSysAdmin()
+    {
+        return $this->role == "super_admin" && $this->id == 1;
     }
 }

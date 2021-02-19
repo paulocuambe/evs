@@ -7,7 +7,7 @@
     <main>
 
         <div class="mb-4">
-            <a href="" class="w-32 btn-primary">+ Adicionar</a>
+            <a href="{{ route('users.create') }}" class="w-32 btn-primary">+ Adicionar</a>
         </div>
 
         @if(isset($users) && count($users))

@@ -35,4 +35,7 @@ Route::prefix('dashboard')->group(function () {
     Route::put('update-password', [ProfileController::class, 'updatePassword'])->name('profile.password-reset');
 
     Route::get('users', [UsersController::class, 'index'])->name('users');
+    Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
+    Route::post('users', [UsersController::class, 'store'])->name('users.store');
+
 });
