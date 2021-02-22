@@ -35,7 +35,7 @@ class StoreUserRequest extends FormRequest
                 'password' => ['required', 'confirmed', 'min:6'],
             ];
             
-        // Other admins rether than the sys_admin
+        // Other super_admins rether than the sys_admin
         } elseif (Auth::user()->isSuperAdmin()) {
             return [
                 'name' => ['required'],
@@ -54,7 +54,6 @@ class StoreUserRequest extends FormRequest
             'surname' => ['required', 'min:4'],
             'username' => ['required', 'unique:users', 'min:4'],
             'email' => ['nullable', 'email', 'unique:users'],
-            'phone_number' => ['required', 'min:12', 'max:12'],
             'password' => ['required', 'confirmed', 'min:6'],
         ];
     }

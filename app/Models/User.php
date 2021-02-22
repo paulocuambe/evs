@@ -44,6 +44,25 @@ class User extends Authenticatable
         return $this->hasMany(User::class, 'parent_id');
     }
 
+
+    public function scopeSysAdmin($query, $bool=true)
+    {
+        if ($bool) {
+            return $query->where('role', '=', 'super_admin')->where('id', '=', 1);
+        }
+        return $query->where('role', '!=', 'super_admin')->where('id', '!=', 1);
+    }
+
+    public function scopeSuperAdmin($query, $bool=true)
+    {
+        return $bool ? $query->where('role', '=', 'super_admin'): $query->where('role', '!=', 'super_admin');
+    }
+
+    public function scopeAdmin($query)
+    {
+        return $query->where('role', '=', 'admin');
+    }
+
     public function isNormal()
     {
         return $this->role == "normal";

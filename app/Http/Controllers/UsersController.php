@@ -12,8 +12,17 @@ class UsersController extends Controller
 {
     public function index()
     {
+        $users = [];
+        if (Auth::user()->isSysAdmin()) {
+            $users = User::sysAdmin(false)->paginate();
+        } elseif (Auth::user()->isSuperAdmin()) {
+            $users = User::superAdmin(false)->paginate();
+        } elseif (Auth::user()->isAdmin()) {
+            $users = Auth::user()->subusers()->paginate();
+        }
+
         return view('users.index')->with([
-            'users' => User::paginate()
+            'users' => $users
         ]);
     }
 
@@ -29,6 +38,10 @@ class UsersController extends Controller
         $data['password'] = bcrypt($request->input('password'));
         $data['name'] .= ' ' . $data['surname'];
         unset($data['surname']);
+
+        if (Auth::user()->isAdmin()) {
+            $data['parent_id'] = Auth::id();
+        }
 
         $user = User::query()->create($data);
 
