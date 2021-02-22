@@ -30,7 +30,7 @@ class StoreUserRequest extends FormRequest
                 'surname' => ['required', 'min:4'],
                 'username' => ['required', 'unique:users', 'min:4'],
                 'email' => ['nullable', 'email', 'unique:users'],
-                // 'organization_id' => ['nullable', 'exists:organizations,id'],
+                'organization_id' => ['nullable', 'exists:organizations,id'],
                 'role' => ['required', 'in:normal,admin,super_admin'],
                 'password' => ['required', 'confirmed', 'min:6'],
             ];
@@ -42,7 +42,7 @@ class StoreUserRequest extends FormRequest
                 'surname' => ['required', 'min:4'],
                 'username' => ['required', 'unique:users', 'min:4'],
                 'email' => ['nullable', 'email', 'unique:users'],
-                // 'organization_id' => ['required', 'exists:organizations,id'],
+                'organization_id' => ['required', 'exists:organizations,id'],
                 'role' => ['required', 'in:normal,admin'],
                 'password' => ['required', 'confirmed', 'min:6'],
             ];

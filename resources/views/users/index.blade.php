@@ -19,6 +19,7 @@
                         <th class="border px-4 py-2">Nome</th>
                         <th class="border px-4 py-2">Username</th>
                         <th class="border px-4 py-2">Email</th>
+                        <th class="border px-4 py-2">Organização</th>
                         <th class="border px-4 py-2">Previlégios</th>
                         <th class="border px-4 py-2">Estado</th>
                         <th class="w-32 border px-4 py-2">Accões</th>
@@ -31,6 +32,7 @@
                             <td class="border px-4 py-2">{{ $user->name }}</td>
                             <td class="border px-4 py-2">{{ $user->username }}</td>
                             <td class="border px-4 py-2">{{ $user->email ?? '-' }}</td>
+                            <td class="border px-4 py-2">{{ $user->organization->name }}</td>
                             <td class="border px-4 py-2">{{ $user->role }}</td>
                             <td class="border px-4 py-2">
                                 @if($user->suspended)

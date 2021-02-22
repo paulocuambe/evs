@@ -44,8 +44,12 @@ class User extends Authenticatable
         return $this->hasMany(User::class, 'parent_id');
     }
 
-    public function organization(){
-        return $this->belongsTo(Organization::class);
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class)->withDefault([
+            'id' => 0,
+            'name' => '-'
+        ]);
     }
 
     public function scopeSysAdmin($query, $bool=true)
@@ -53,7 +57,7 @@ class User extends Authenticatable
         if ($bool) {
             return $query->where('role', '=', 'super_admin')->where('id', '=', 1);
         }
-        return $query->where('role', '!=', 'super_admin')->where('id', '!=', 1);
+        return $query->where('id', '!=', 1);
     }
 
     public function scopeSuperAdmin($query, $bool=true)

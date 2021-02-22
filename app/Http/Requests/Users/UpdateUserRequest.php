@@ -29,6 +29,7 @@ class UpdateUserRequest extends FormRequest
                 'name' => ['required'],
                 'surname' => ['required', 'min:4'],
                 'email' => ['nullable', 'email', 'unique:users,email,' . $this->user_id],
+                'organization_id' => ['nullable', 'exists:organizations,id'],
                 'role' => ['required', 'in:normal,admin,super_admin'],
                 'password' => ['nullable', 'min:6', 'confirmed'],
             ];
@@ -37,7 +38,7 @@ class UpdateUserRequest extends FormRequest
                 'name' => ['required'],
                 'surname' => ['required', 'min:4'],
                 'email' => ['nullable', 'email', 'unique:users,email,' . $this->user_id],
-                // 'organization_id' => ['required', 'exists:organizations,id'],
+                'organization_id' => ['required', 'exists:organizations,id'],
                 'role' => ['required', 'in:normal,admin'],
                 'password' => ['nullable', 'min:6', 'confirmed'],
             ];

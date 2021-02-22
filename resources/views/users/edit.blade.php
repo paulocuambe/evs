@@ -50,6 +50,23 @@
 
                 @if(auth()->user()->isSuperAdmin())
                     <div class="grid grid-cols-2 gap-2">
+                        @isset($organizations)
+                            <div class="form-group">
+                                <label class="label-base" for="userOrg">Organização</label>
+                                <select name="organization_id" class="input-base" id="userOrg">
+                                    @if(auth()->user()->isSysAdmin())
+                                        <option value>---------------</option>
+                                    @endif
+                                    @foreach($organizations as $organization)
+                                        <option value="{{ $organization->id }}" {{ $user->organization->id == $organization->id ? 'selected' : '' }}>{{ $organization->name }}</option>
+                                    @endforeach
+                                </select>
+                                @if(isset($errors) && $errors->has('organization_id'))
+                                    <p class="form-input-error">{{ $errors->first('organization_id') }}</p>
+                                @endif
+                            </div>
+                        @endisset
+
                         <div class="form-group">
                             <label class="label-base" for="userRole">Previlégios</label>
                             <select name="role" class="input-base" id="userRole">

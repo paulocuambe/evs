@@ -60,20 +60,26 @@
                 <input class="input-base" placeholder="***********" type="password" name="password_confirmation" id="confirmPassword" required>
             </div>
 
-                <div class="grid grid-cols-2 gap-2">
-                    {{-- <div class="form-group">
-                        <label class="label-base" for="userOrg">Organização</label>
-                        <select name="organization_id" class="input-base" id="userOrg">
-                            <option value>---------------</option>
-                            <option value="1">MEREC</option>
-                            <option value="2">EDM</option>
-                        </select>
-                        @if(isset($errors) && $errors->has('organization_id'))
-                            <p class="form-input-error">{{ $errors->first('organization_id') }}</p>
-                        @endif
-                    </div> --}}
+                @if(auth()->user()->isSuperAdmin())
+                    <div class="grid grid-cols-2 gap-2">
+                        @isset($organizations)
+                            <div class="form-group">
+                                <label class="label-base" for="userOrg">Organização</label>
+                                <select name="organization_id" class="input-base" id="userOrg">
+                                    @if(auth()->user()->isSysAdmin())
+                                        <option value>---------------</option>
+                                    @endif
+                                    
+                                    @foreach($organizations as $organization)
+                                        <option value="{{ $organization->id }}">{{ $organization->name }}</option>
+                                    @endforeach
+                                </select>
+                                @if(isset($errors) && $errors->has('organization_id'))
+                                    <p class="form-input-error">{{ $errors->first('organization_id') }}</p>
+                                @endif
+                            </div>
+                        @endisset
 
-                    @if(auth()->user()->isSuperAdmin())
                         <div class="form-group">
                             <label class="label-base" for="userRole">Previlégios</label>
                             <select name="role" class="input-base" id="userRole">
@@ -84,8 +90,8 @@
                                 @endif
                             </select>
                         </div>
-                    @endif
-                </div>
+                    </div>
+                @endif
 
             <div class="mt-4 flex justify-between items-end">
                 <button type="submit" class="w-32 btn-primary">Criar usuário</button>
