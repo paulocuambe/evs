@@ -6,6 +6,7 @@ use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\TransactionStatsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 
@@ -46,4 +47,10 @@ Route::prefix('dashboard')->group(function () {
     Route::post('users/{user_id}/enable', [ProfileController::class, 'enable'])->name('users.enable');
     Route::post('users/{user_id}/disable', [ProfileController::class, 'disable'])->name('users.disable');
 
+
+    Route::get('organizations', [OrganizationsController::class, 'index'])->name('organizations');
+    Route::post('organizations/', [OrganizationsController::class, 'store'])->name('organizations.store');
+    Route::get('organizations/{id}/edit', [OrganizationsController::class, 'edit'])->name('organizations.edit');
+    Route::put('organizations/{id}/update', [OrganizationsController::class, 'update'])->name('organizations.update');
+    Route::delete('organizations/{id}', [OrganizationsController::class, 'destroy'])->name('organizations.destroy');
 });

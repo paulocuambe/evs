@@ -44,6 +44,9 @@ class User extends Authenticatable
         return $this->hasMany(User::class, 'parent_id');
     }
 
+    public function organization(){
+        return $this->belongsTo(Organization::class);
+    }
 
     public function scopeSysAdmin($query, $bool=true)
     {

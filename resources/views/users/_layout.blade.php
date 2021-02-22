@@ -12,7 +12,7 @@
         </a>
 
         @if(auth()->user()->isSuperAdmin())
-            <a href="" class="nav-tab">Organizações</a>
+            <a href="{{ route('organizations') }}" class="nav-tab {{ request()->routeIs('organizations') || request()->routeIs('organizations.*') ? 'active' : ''}}">Organizações</a>
         @endif
     </nav>
     <main>
