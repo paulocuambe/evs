@@ -49,6 +49,16 @@
                         <span>Perfil</span>
                     </a>
                 </li>
+
+                @if(auth()->user()->isSuperAdmin())
+                    <li>
+                        <a href="{{ route('customers') }}"
+                            class="{{ request()->routeIs('customers')? 'active' : '' }}">
+                            <img src="{{ asset('img/icon/discover.png') }}" alt="Discover Icon">
+                            <span>Clientes</span>
+                        </a>
+                    </li>
+                @endif
             </ul>
 
             <footer class="mb-8 px-4 py-2 flex items-center">

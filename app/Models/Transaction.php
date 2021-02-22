@@ -10,6 +10,7 @@ class Transaction extends Model
     use HasFactory;
     protected $table = "transaction";
     protected $connection = "evs";
+    protected $perPage = 20;
 
     public function scopeStatus($query, $status)
     {

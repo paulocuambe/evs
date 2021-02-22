@@ -9,7 +9,7 @@ class TransactionsController extends Controller
 {
     public function index()
     {
-        $transactions = Transaction::with('dealer')->status('Credited')->paginate(20);
+        $transactions = Transaction::with('dealer')->status('Credited')->paginate();
 
         return \view('transactions.index')->with(['transactions' => $transactions]);
     }

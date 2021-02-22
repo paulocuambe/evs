@@ -9,6 +9,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CustomersController;
+
 
 
 
@@ -53,4 +55,6 @@ Route::prefix('dashboard')->group(function () {
     Route::get('organizations/{id}/edit', [OrganizationsController::class, 'edit'])->name('organizations.edit');
     Route::put('organizations/{id}/update', [OrganizationsController::class, 'update'])->name('organizations.update');
     Route::delete('organizations/{id}', [OrganizationsController::class, 'destroy'])->name('organizations.destroy');
+
+    Route::get('customers', [CustomersController::class, 'index'])->name('customers');
 });
