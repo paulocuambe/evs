@@ -15,12 +15,12 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function suspend($user_id)
+    public function disable($user_id)
     {
         $user = User::query()->findOrFail($user_id);
 
-        if ($user->suspend()) {
-            return redirect()->route('users.index');
+        if ($user->disable()) {
+            return redirect()->route('users');
         } else {
             return redirect()->back();
         }
@@ -31,7 +31,7 @@ class ProfileController extends Controller
         $user = User::query()->findOrFail($user_id);
 
         if ($user->enable()) {
-            return redirect()->route('users.index');
+            return redirect()->route('users');
         } else {
             return redirect()->back();
         }

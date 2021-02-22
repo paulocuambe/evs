@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Users\StoreUserRequest;
 use App\Http\Requests\Users\UpdateUserRequest;
 
-
 class UsersController extends Controller
 {
     public function index()
@@ -76,5 +75,11 @@ class UsersController extends Controller
         } else {
             return redirect()->back();
         }
+    }
+
+    public function destroy($user_id)
+    {
+        User::query()->findOrFail($user_id)->delete();
+        return redirect()->back();
     }
 }

@@ -54,6 +54,18 @@ class User extends Authenticatable
         return $this->role == "admin";
     }
 
+    public function disable()
+    {
+        $this->suspended = true;
+        return $this->update();
+    }
+
+    public function enable()
+    {
+        $this->suspended = false;
+        return $this->update();
+    }
+
     public function isSuperAdmin()
     {
         return $this->role == "super_admin";

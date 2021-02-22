@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +40,10 @@ Route::prefix('dashboard')->group(function () {
     Route::post('users', [UsersController::class, 'store'])->name('users.store');
     Route::get('users/{user_id}/edit', [UsersController::class, 'edit'])->name('users.edit');
     Route::put('users/{user_id}', [UsersController::class, 'update'])->name('users.update');
+    Route::delete('users/{user_id}', [UsersController::class, 'destroy'])->name('users.destroy');
 
+
+    Route::post('users/{user_id}/enable', [ProfileController::class, 'enable'])->name('users.enable');
+    Route::post('users/{user_id}/disable', [ProfileController::class, 'disable'])->name('users.disable');
 
 });
