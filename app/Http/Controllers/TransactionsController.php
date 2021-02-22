@@ -7,11 +7,18 @@ use Illuminate\Http\Request;
 
 class TransactionsController extends Controller
 {
-    public function index()
-    {
-        $transactions = Transaction::with('dealer')->status('Credited')->paginate();
+    protected $searchParams = ['account', 'initial_date', 'final_date'];
 
-        return \view('transactions.index')->with(['transactions' => $transactions]);
+    public function index(Request $request)
+    {
+        $data = [];
+        if($request->filled('account')){
+            $data['transactions'] = Transaction::with('dealer')->status('Credited')->paginate();
+        } else if($request->hasAny($this->searchParams)){
+            return view('transactions.index')->withErrors(['empty_params' => 'Preencha os campos de pesquisa']);
+        }
+
+        return \view('transactions.index')->with($data);
     }
 
 

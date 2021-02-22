@@ -16,18 +16,8 @@
             </div>
 
             <div>
-                <label class="label-base" for="initialTime">Hora Inicial</label>
-                <input class="input-base" name="initial_hour" type="time" value="{{ request('initial_hour') }}" id="initialTime">
-            </div>
-
-            <div>
                 <label class="label-base" for="finalDate">Data Final</label>
                 <input class="input-base" name="final_date" type="date" value="{{ request('final_date') }}" id="finalDate">
-            </div>
-
-            <div>
-                <label class="label-base" for="finalTime">Hora Final</label>
-                <input class="input-base" name="final_hour" type="time" value="{{ request('final_hour') }}" id="finalTime">
             </div>
 
             <div>
@@ -44,8 +34,8 @@
         </form>
     </div>
 
-    @isset($error_message)
-        <p class="text-lg text-red-600">{{ $error_message }}</p>
+    @if(isset($errors) && $errors->has('empty_params'))
+        <p class="text-lg text-red-600">{{ $errors->first('empty_params') }}</p>
     @endif
 
     @isset($transactions)
