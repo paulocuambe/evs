@@ -41,8 +41,7 @@
                             </td>
                             <td class="border px-4 py-2">
                                 <div class="flex justify-between flex-wrap">
-                                    {{-- {{ route('users.edit', ['user_id'=> $user->id]) }} --}}
-                                    <a title="Actualizar informações" class="text-blue-600 underline" href="">
+                                    <a title="Actualizar informações" class="text-blue-600 underline" href="{{ route('users.edit', ['user_id'=> $user->id]) }}">
                                         <img class="w-4" src="{{ asset('img/icon/edit.png') }}" alt="Edit">
                                     </a>
 

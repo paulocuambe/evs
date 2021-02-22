@@ -39,6 +39,21 @@ class User extends Authenticatable
 
     protected $pagination = 20;
 
+    public function subusers()
+    {
+        return $this->hasMany(User::class, 'parent_id');
+    }
+
+    public function isNormal()
+    {
+        return $this->role == "normal";
+    }
+
+    public function isAdmin()
+    {
+        return $this->role == "admin";
+    }
+
     public function isSuperAdmin()
     {
         return $this->role == "super_admin";
@@ -47,5 +62,15 @@ class User extends Authenticatable
     public function isSysAdmin()
     {
         return $this->role == "super_admin" && $this->id == 1;
+    }
+
+    public function getFirstNameAttribute()
+    {
+        return explode(" ", $this->name)[0];
+    }
+
+    public function getLastNameAttribute()
+    {
+        return explode(" ", $this->name)[1];
     }
 }

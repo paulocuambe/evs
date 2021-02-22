@@ -37,5 +37,8 @@ Route::prefix('dashboard')->group(function () {
     Route::get('users', [UsersController::class, 'index'])->name('users');
     Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
     Route::post('users', [UsersController::class, 'store'])->name('users.store');
+    Route::get('users/{user_id}/edit', [UsersController::class, 'edit'])->name('users.edit');
+    Route::put('users/{user_id}', [UsersController::class, 'update'])->name('users.update');
+
 
 });
