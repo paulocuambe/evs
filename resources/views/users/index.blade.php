@@ -54,8 +54,14 @@
                                                 <img class="w-4" src="{{ asset('img/icon/checked.png') }}" alt="Activate">
                                             </button>
                                         </form>
-                                    
                                     @else
+                                    {{-- {{ route('users.accounts', ['user_id'=> $user->id]) }} --}}
+                                        <form action="{{ route('users.accounts', ['user_id'=> $user->id]) }}" method="GET">
+                                            <button title="Contas do Utilizador" class="text-red-600 underline">
+                                                <img class="w-4" src="{{ asset('img/icon/binoculars.png') }}" alt="Accounts">
+                                            </button>
+                                        </form>
+
                                         <form action="{{ route('users.disable', ['user_id'=> $user->id]) }}" method="post">
                                             @csrf
                                             <button title="Suspender Utilizador" class="text-red-600 underline">
@@ -67,7 +73,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button title="Eliminar Utilizador" class="text-red-600 underline">
-                                                <img class="w-4" src="{{ asset('img/icon/delete.png') }}" alt="Supend">
+                                                <img class="w-4" src="{{ asset('img/icon/delete.png') }}" alt="Delete">
                                             </button>
                                         </form>
                                     @endif

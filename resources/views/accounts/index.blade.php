@@ -1,7 +1,7 @@
 @extends('_layouts.dashboard')
 @section('main')
 
-    @if(isset($customers) && count($customers))
+    @if(isset($accounts) && count($accounts))
         <div class="overflow-x-auto">
             <table class="w-full table-auto">
                 <thead class="text-left bg-gray-300">
@@ -16,22 +16,22 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($customers as $customer)
+                @foreach($accounts as $account)
                     <tr>
-                        <td class="border px-4 py-2">{{ $customer->id }}</td>
-                        <td class="border px-4 py-2">{{ $customer->apikey }}</td>
-                        <td class="border px-4 py-2">{{ $customer->account }}</td>
-                        <td class="border px-4 py-2">{{ $customer->descr }}</td>
-                        <td class="border px-4 py-2">{{ $customer->disabled_msg }}</td>
-                        <td class="border px-4 py-2">{{ $customer->status }}</td>
-                        <td class="border px-4 py-2">{{ $customer->creationDate }}</td>
+                        <td class="border px-4 py-2">{{ $account->id }}</td>
+                        <td class="border px-4 py-2">{{ $account->apikey }}</td>
+                        <td class="border px-4 py-2">{{ $account->account }}</td>
+                        <td class="border px-4 py-2">{{ $account->descr }}</td>
+                        <td class="border px-4 py-2">{{ $account->disabled_msg }}</td>
+                        <td class="border px-4 py-2">{{ $account->status }}</td>
+                        <td class="border px-4 py-2">{{ $account->creationDate }}</td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
         <div>
-            {{ $customers->links() }}
+            {{ $accounts->links() }}
         </div>
     @else
         <div class="mt-10 w-full border-2 border-gray-400 border-dashed p-4">

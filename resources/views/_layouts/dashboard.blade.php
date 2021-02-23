@@ -52,8 +52,8 @@
 
                 @if(auth()->user()->isSuperAdmin())
                     <li>
-                        <a href="{{ route('customers') }}"
-                            class="{{ request()->routeIs('customers')? 'active' : '' }}">
+                        <a href="{{ route('accounts') }}"
+                            class="{{ request()->routeIs('accounts')? 'active' : '' }}">
                             <img src="{{ asset('img/icon/discover.png') }}" alt="Discover Icon">
                             <span>Clientes</span>
                         </a>
