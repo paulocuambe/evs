@@ -52,6 +52,10 @@ class User extends Authenticatable
         ]);
     }
 
+    public function accounts(){
+        return $this->hasMany(UserAccount::class);
+    }
+
     public function scopeSysAdmin($query, $bool=true)
     {
         if ($bool) {
