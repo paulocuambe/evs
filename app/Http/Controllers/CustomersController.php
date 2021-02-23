@@ -9,7 +9,7 @@ class CustomersController extends Controller
 {
     public function index()
     {
-        $customers = Customer::paginate();
+        $customers = Customer::query()->select(['id', 'status', 'account', 'apikey', 'descr', 'disabled_msg', 'creationDate'])->paginate();
         return view('customers.index')->with(['customers'=>$customers]);
     }
 }
