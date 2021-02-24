@@ -30,14 +30,14 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('transactions') }}" class="">
+                    <a href="{{ route('transactions') }}" class="{{ request()->routeIs('transactions') ? 'active' : '' }}">
                         <img src="{{ asset('img/icon/transaction.png') }}" alt="inbox Icon">
                         <span>Transações</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('stats') }}">
+                    <a href="{{ route('stats') }}" class="{{ request()->routeIs('stats') ? 'active' : '' }}">
                         <img src="{{ asset('img/icon/stats.png') }}" alt="Stats Icon">
                         <span>Digest</span>
                     </a>
