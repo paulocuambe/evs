@@ -9,7 +9,19 @@
 
 @section('main')
     <div class="mb-4">
-        <form method="get" action="" class="mt-2 grid lg:grid-cols-4 gap-4">
+        <form method="get" action="" class="mt-2 grid lg:grid-cols-5 gap-4">
+            <div>
+                <label class="label-base" for="customerId1">Serviço</label>
+                <select class="input-base" name="account" id="account">
+                    <option value>------------</option>
+                    @isset($accounts)
+                        @foreach($accounts as $account)
+                            <option {{ request('account') == $account->id ? 'selected' : '' }} value="{{ $account->id }}">{{ $account->account }}</option>
+                        @endforeach
+                    @endisset
+                </select>
+            </div>
+
             <div>
                 <label class="label-base" for="initialDate">Data Inicial</label>
                 <input class="input-base" name="initial_date" type="date" value="{{ request('initial_date') }}" id="initialDate">
@@ -21,7 +33,7 @@
             </div>
 
             <div>
-                <label class="label-base" for="number">Número</label>
+                <label class="label-base" for="number">MSISDN</label>
                 <input class="input-base" name="number" placeholder="Numero da pesquisa..." type="number" value="{{ request('number') }}" id="number">
             </div>
 

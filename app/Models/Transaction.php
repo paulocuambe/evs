@@ -12,6 +12,12 @@ class Transaction extends Model
     protected $connection = "evs";
     protected $perPage = 20;
 
+
+    public function dealer()
+    {
+        return $this->hasOne(Dealer::class, 'id', 'dealer_id');
+    }
+
     public function scopeStatus($query, $status)
     {
         return $query->where('transacStatus', '=', $status);
@@ -119,11 +125,4 @@ class Transaction extends Model
     {
         return $query->testEnv()->i9status(1)->between($interval)->customers($customers)->credelec();
     }
-
-    public function dealer()
-    {
-        return $this->hasOne(Dealer::class, 'id', 'dealer_id');
-    }
-
-    
 }
