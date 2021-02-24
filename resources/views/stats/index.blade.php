@@ -12,7 +12,7 @@
         <div class="">
             <form method="get" action="{{ route('stats') }}" class="mt-2 grid md:grid-cols-5 gap-4">
                 <div>
-                    <label class="label-base" for="customerId1">Cliente</label>
+                    <label class="label-base" for="customerId1">Serviço</label>
                     <select class="input-base" name="account" id="account">
                         <option value>------------</option>
                         @isset($accounts)
