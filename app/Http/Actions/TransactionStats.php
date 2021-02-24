@@ -12,7 +12,7 @@ class TransactionStats
         $stats =[];
 
         $inteval = [$request->input('initial_date'), $request->input('final_date')];
-        $customers = [$request->input('customer_id1'), $request->input('customer_id2')];
+        $customers = intval($request->input('account'));
 
         $pin = Transaction::query()->pinVoucherStats("vodacom", $inteval, $customers);
         $pinless = Transaction::query()->pinlessVoucherStats("vodacom", $inteval, $customers);

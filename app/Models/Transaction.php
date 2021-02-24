@@ -88,8 +88,8 @@ class Transaction extends Model
 
     public function scopeBetween($query, $interval)
     {
-        $start = isset($interval[0]) ? $interval[0] . ' 00:00' : null;
-        $end = isset($interval[1]) ? $interval[1] . ' 23:59:59' : null;
+        $start = isset($interval[0]) ? $interval[0] . ' 00:00' : date('Y-m-d 00:00');
+        $end = isset($interval[1]) ? $interval[1] . ' 23:59:59' : date('Y-m-d 23:59:59');
 
         if (is_null($end)) {
             return $query->where('end_ts', '>=', $start);

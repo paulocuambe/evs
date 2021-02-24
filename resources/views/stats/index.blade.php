@@ -12,13 +12,15 @@
         <div class="">
             <form method="get" action="{{ route('stats') }}" class="mt-2 grid md:grid-cols-5 gap-4">
                 <div>
-                    <label class="label-base" for="customerId1">Id1 do cliente</label>
-                    <input class="input-base" name="customer_id1" type="number" value="{{ request('customer_id1') }}" id="customerId1">
-                </div>
-            
-                <div>
-                    <label class="label-base" for="customerId2">Id2 da conta</label>
-                    <input class="input-base" name="customer_id2" type="number" value="{{ request('customer_id2') }}" id="customerId2">
+                    <label class="label-base" for="customerId1">Cliente</label>
+                    <select class="input-base" name="account" id="account">
+                        <option value>------------</option>
+                        @isset($accounts)
+                            @foreach($accounts as $account)
+                                <option {{ request('account') == $account->id ? 'selected' : '' }} value="{{ $account->id }}">{{ $account->account }}</option>
+                            @endforeach
+                        @endisset
+                    </select>
                 </div>
 
                 <div>
@@ -38,29 +40,27 @@
             </form>
 
             <div class="mt-2">
-                <a href="{{ route('stats') }}" class="mt-2 text-sm text-red-500 hover:font-semibold underline">Limpar
-                    filtros</a>
+                <a href="{{ route('stats') }}" class="mt-2 text-sm text-red-500 hover:font-semibold underline">Limpar filtros</a>
             </div>
         </div>
         <div class="mt-10">
-            <div>
-                <form action="" method="get" class="flex justify-end mb-4">
-                    @csrf
-                    <input type="hidden" name="customer_id1" value="{{ request()->input('customer_id1') }}">
-                    <input type="hidden" name="customer_id2" value="{{ request()->input('customer_id2') }}">
-                    <input type="hidden" name="initial_date" value="{{ request()->input('initial_date') }}">
-                    <input type="hidden" name="final_date" value="{{ request()->input('final_date') }}">
-                    <button class="text-green-500 underline">Baixar (.xlsx)</button>
-                </form>
-            </div>
-
             @isset($stats)
+                <div>
+                    <form action="" method="get" class="flex justify-end mb-4">
+                        @csrf
+                        <input type="hidden" name="account" value="{{ request()->input('account') }}">
+                        <input type="hidden" name="initial_date" value="{{ request()->input('initial_date') }}">
+                        <input type="hidden" name="final_date" value="{{ request()->input('final_date') }}">
+                        <button class="text-green-500 underline">Baixar (.xlsx)</button>
+                    </form>
+                </div>
+
                 <div class="grid md:grid-cols-2 gap-16">
                     <table class="w-full h-full table-auto">
                         <thead class="text-left bg-gray-300">
                         <tr>
                             <th class="bg-gray-900 text-center text-white border px-4 py-2" colspan="6">
-                                Airtime
+                                Airtime - {{ $stats['account'] }}
                             </th>
                         </tr>
                         <tr>
