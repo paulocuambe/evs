@@ -1,3 +1,8 @@
+@php
+    $my_username = auth()->user()->username;
+    $user_balance = App\Models\PrepaidAccount::where('id', $my_username)->pluck('balance')->first() ?? 0;
+@endphp
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -77,7 +82,7 @@
                 @yield('page', 'Home')
             </h3>
             <div class="flex items-center">
-                <h4 class="mr-4 text-green-700 font-semibold">pcuambe</h4>
+                <h4 class="mr-4 text-green-700 font-semibold">{{ $user_balance }} MT -  {{ auth()->user()->username }}</h4>
             </div>
         </div>
     </header>
