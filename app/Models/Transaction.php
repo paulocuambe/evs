@@ -33,6 +33,16 @@ class Transaction extends Model
         return $query->where('i9_status', '=', $status);
     }
 
+    public function scopeRequestID($query, $requestID)
+    {
+        return $query->where('cust_req_id', 'LIKE', "%$requestID%");
+    }
+
+    public function scopeMsisdn($query, $number)
+    {
+        return $query->where('msisdn_or_mno', 'LIKE', "$number%");
+    }
+
 
     public function scopeNetwork($query, $network)
     {

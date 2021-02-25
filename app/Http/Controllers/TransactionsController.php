@@ -22,9 +22,14 @@ class TransactionsController extends Controller
         }
 
         if ($request->filled('account')) {
+            $interval = [$request->input('initial_date'), $request->input('final_date')];
             $data['transactions'] = Transaction::with('dealer')
-                                        ->customers($request->input('account'))
+                                        ->customers(intval($request->input('account')))
+                                        ->between($interval)
+                                        ->msisdn($request->input('msisdn'))
+                                        ->requestID($request->input('request_id'))
                                         ->status('Credited')
+                                        ->orderBy('req_ts', 'desc')
                                         ->paginate();
         } elseif ($request->hasAny($this->searchParams)) {
             return view('transactions.index')->with($data)->withErrors(['empty_params' => 'O campo de serviço deve estar preenchido.']);
