@@ -36,26 +36,26 @@ Route::middleware(['auth'])->group(function () {
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('update-password', [ProfileController::class, 'updatePassword'])->name('profile.password-reset');
 
-        Route::get('users', [UsersController::class, 'index'])->name('users');
-        Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
-        Route::post('users', [UsersController::class, 'store'])->name('users.store');
-        Route::get('users/{user_id}/edit', [UsersController::class, 'edit'])->name('users.edit');
-        Route::put('users/{user_id}', [UsersController::class, 'update'])->name('users.update');
-        Route::delete('users/{user_id}', [UsersController::class, 'destroy'])->name('users.destroy');
-
-
-        Route::post('users/{user_id}/enable', [ProfileController::class, 'enable'])->name('users.enable');
-        Route::post('users/{user_id}/disable', [ProfileController::class, 'disable'])->name('users.disable');
-
-
-        Route::get('organizations', [OrganizationsController::class, 'index'])->name('organizations');
-        Route::post('organizations/', [OrganizationsController::class, 'store'])->name('organizations.store');
-        Route::get('organizations/{id}/edit', [OrganizationsController::class, 'edit'])->name('organizations.edit');
-        Route::put('organizations/{id}/update', [OrganizationsController::class, 'update'])->name('organizations.update');
-        Route::delete('organizations/{id}', [OrganizationsController::class, 'destroy'])->name('organizations.destroy');
-
-        Route::get('accounts', [AccountsController::class, 'index'])->name('accounts');
-        Route::get('users/{user_id}/accounts', [UsersAccountsController::class, 'index'])->name('users.accounts');
-        Route::post('users/{user_id}/accounts/add', [UsersAccountsController::class, 'store'])->name('users.accounts.add');
+        Route::middleware(['auth.super-admin'])->group(function () {
+            Route::get('users', [UsersController::class, 'index'])->name('users');
+            Route::get('users/create', [UsersController::class, 'create'])->name('users.create');
+            Route::post('users', [UsersController::class, 'store'])->name('users.store');
+            Route::get('users/{user_id}/edit', [UsersController::class, 'edit'])->name('users.edit');
+            Route::put('users/{user_id}', [UsersController::class, 'update'])->name('users.update');
+            Route::delete('users/{user_id}', [UsersController::class, 'destroy'])->name('users.destroy');
+            
+            Route::post('users/{user_id}/enable', [ProfileController::class, 'enable'])->name('users.enable');
+            Route::post('users/{user_id}/disable', [ProfileController::class, 'disable'])->name('users.disable');
+            
+            Route::get('organizations', [OrganizationsController::class, 'index'])->name('organizations');
+            Route::post('organizations/', [OrganizationsController::class, 'store'])->name('organizations.store');
+            Route::get('organizations/{id}/edit', [OrganizationsController::class, 'edit'])->name('organizations.edit');
+            Route::put('organizations/{id}/update', [OrganizationsController::class, 'update'])->name('organizations.update');
+            Route::delete('organizations/{id}', [OrganizationsController::class, 'destroy'])->name('organizations.destroy');
+            
+            Route::get('accounts', [AccountsController::class, 'index'])->name('accounts');
+            Route::get('users/{user_id}/accounts', [UsersAccountsController::class, 'index'])->name('users.accounts');
+            Route::post('users/{user_id}/accounts/add', [UsersAccountsController::class, 'store'])->name('users.accounts.add');
+        });
     });
 });

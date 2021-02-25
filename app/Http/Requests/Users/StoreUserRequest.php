@@ -29,7 +29,7 @@ class StoreUserRequest extends FormRequest
                 'name' => ['required'],
                 'surname' => ['required', 'min:4'],
                 'username' => ['required', 'unique:users', 'min:4'],
-                'email' => ['nullable', 'email', 'unique:users'],
+                'email' => ['required', 'email', 'unique:users'],
                 'organization_id' => ['nullable', 'exists:organizations,id'],
                 'role' => ['required', 'in:normal,admin,super_admin'],
                 'password' => ['required', 'confirmed', 'min:6'],
@@ -41,7 +41,7 @@ class StoreUserRequest extends FormRequest
                 'name' => ['required'],
                 'surname' => ['required', 'min:4'],
                 'username' => ['required', 'unique:users', 'min:4'],
-                'email' => ['nullable', 'email', 'unique:users'],
+                'email' => ['required', 'email', 'unique:users'],
                 'organization_id' => ['required', 'exists:organizations,id'],
                 'role' => ['required', 'in:normal,admin'],
                 'password' => ['required', 'confirmed', 'min:6'],
@@ -53,7 +53,7 @@ class StoreUserRequest extends FormRequest
             'name' => ['required'],
             'surname' => ['required', 'min:4'],
             'username' => ['required', 'unique:users', 'min:4'],
-            'email' => ['nullable', 'email', 'unique:users'],
+            'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:6'],
         ];
     }
