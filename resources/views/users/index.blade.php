@@ -58,7 +58,7 @@
                                     {{-- {{ route('users.accounts', ['user_id'=> $user->id]) }} --}}
                                         <form action="{{ route('users.accounts', ['user_id'=> $user->id]) }}" method="GET">
                                             <button title="Contas do Utilizador" class="text-red-600 underline">
-                                                <img class="w-4" src="{{ asset('img/icon/binoculars.png') }}" alt="Accounts">
+                                                <img class="w-4" src="{{ asset('img/icon/shortcodes.png') }}" alt="Accounts">
                                             </button>
                                         </form>
 

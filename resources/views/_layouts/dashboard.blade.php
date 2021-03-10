@@ -1,6 +1,9 @@
 @php
     $my_username = auth()->user()->username;
     $user_balance = App\Models\PrepaidAccount::where('id', $my_username)->pluck('balance')->first() ?? 0;
+
+    // $accounts = auth()->user()->accounts()->pluck('account_id');
+    // $balance = App\Models\PrepaidAccount::whereIn('id', $accounts)->sum('balance') ?? 0;
 @endphp
 
 <!doctype html>
