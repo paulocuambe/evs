@@ -113,7 +113,9 @@ class UsersController extends Controller
 
     public function destroy($user_id)
     {
-        User::query()->findOrFail($user_id)->delete();
+        $user = User::query()->findOrFail($user_id);
+        $user->accounts()->delete();
+        $user->delete();
         return redirect()->back();
     }
 }

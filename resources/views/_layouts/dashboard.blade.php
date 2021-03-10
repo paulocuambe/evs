@@ -1,9 +1,15 @@
 @php
-    $my_username = auth()->user()->username;
-    $user_balance = App\Models\PrepaidAccount::where('id', $my_username)->pluck('balance')->first() ?? 0;
+    $auth_user = auth()->user();
 
-    // $accounts = auth()->user()->accounts()->pluck('account_id');
-    // $balance = App\Models\PrepaidAccount::whereIn('id', $accounts)->sum('balance') ?? 0;
+    if($auth_user->isSuperAdmin()){
+        $user_balance = 0;
+    } else if ($auth_user->isAdmin()) {
+        $accounts = $auth_user->subusers()->pluck('username');
+        $user_balance = App\Models\PrepaidAccount::whereIn('id', $accounts)->sum('balance');
+    } else {
+        $user_balance = App\Models\PrepaidAccount::where('id', $auth_user->username)->pluck('balance')->first() ?? 0;
+    }
+
 @endphp
 
 <!doctype html>
